@@ -1,5 +1,6 @@
 import psycopg2
 import os
+import relatorio
 
 from utils.funcoes_auxiliares import share_value
 from utils.valida_cpf_folder import valida_cpf
@@ -65,9 +66,20 @@ class Ordem:
 
     def select_share(self, id_cliente):
         ticket = input("Digite o código da ação na B3 (ex: PETR4): ").strip().upper()
+        nome_arquivo = input("Digite o nome do arquivo de saída (ex: relatorio_acao.txt): ").strip()
         print("Selecionando a ação no banco de dados: ")
         select_query = (f"SELECT * FROM SHARE where cliente_id = '{id_cliente}' AND ticket = '{ticket}';")
         self.cursor.execute(select_query)
         share = self.cursor.fetchall()
         print(share)
+        relatorio.obter_dados_acao(nome_arquivo, ticket)
         return share
+
+    def analise_carteira_select (self, id_cliente):
+        print("Selecionando ações no banco de dados: ")
+        select_query = (f"SELECT ticket FROM SHARE where cliente_id = '{id_cliente}';")
+        self.cursor.execute(select_query)
+        lista = self.cursor.fetchall()
+        for share in lista:
+            lista.append(share)
+        return lista

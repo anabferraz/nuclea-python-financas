@@ -17,9 +17,5 @@ def obter_dados_acao(ticker, nome_arquivo):
         print(f"Detalhes do erro: {e}")
 
 if __name__ == "__main__":
-    # Solicitar ao usuário o código da ação e o nome do arquivo
-    ticker = input("Digite o código da ação na B3 (ex: PETR4): ").strip().upper()
-    nome_arquivo = input("Digite o nome do arquivo de saída (ex: relatorio_acao.txt): ").strip()
-
     # Obter e mostrar os dados da ação e exportar para o arquivo
-    obter_dados_acao(ticker, nome_arquivo)
+    obter_dados_acao()

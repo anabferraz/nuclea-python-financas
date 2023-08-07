@@ -1,13 +1,21 @@
 import yfinance
 import pandas
 import matplotlib.pyplot as plt
+from datetime import datetime
+from models.ordem import Ordem
+from utils.valida_cpf_folder import valida_cpf
+
 
 def analisar_carteira():
     # Definir o período de data desejado
     start_date = "2020-01-01"
-    end_date = "2023-01-01"
+    end_date = datetime.now().date()
 
-    lista = ['ABCB4.SA', 'AGRO3.SA', 'BBAS3.SA', 'BBSE3.SA', 'CPLE6.SA', 'GOAU4.SA', 'ITSA4.SA', 'RANI3.SA', 'SAPR11.SA', 'TAEE11.SA', 'VIVT3.SA']
+    conexao = Ordem()
+    lista = []
+    cpf = valida_cpf()
+    conexao.analise_carteira_select(cpf)
+
 
     # Criar um DataFrame vazio
     df = pandas.DataFrame()

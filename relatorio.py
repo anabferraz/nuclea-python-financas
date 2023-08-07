@@ -1,9 +1,9 @@
-import yfinance as yf
+import yfinance
 
 def obter_dados_acao(ticker, nome_arquivo):
     try:
         # Obter os dados da ação usando o Yahoo Finance (B3)
-        acao = yf.download(ticker + '.SA', progress=False)
+        acao = yfinance.download(ticker + '.SA', progress=False)
 
         # Exibir os dados
         with open(nome_arquivo, 'w') as arquivo:

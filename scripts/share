@@ -6,5 +6,5 @@ CREATE TABLE IF NOT EXISTS public.share
     valor_compra numeric(10, 2) NOT NULL,
 	quantidade_compra numeric(5) NOT NULL,
     data_compra date NOT NULL,
-    cliente_id integer NOT NULL REFERENCES public.cliente (id) ON DELETE CASCADE
+    cliente_id character varying NOT NULL REFERENCES public.cliente (cpf) ON DELETE CASCADE
 );

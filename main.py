@@ -1,5 +1,6 @@
 from analise_carteira import analisar_carteira
 from models.cliente import Cliente
+from models.ordem import Ordem
 from utils.menu_secundario import menu_cliente_secundario
 
 
@@ -17,7 +18,8 @@ def main():
             menu_cliente_secundario(option)
 
         elif (opcao=='2'):
-            pass
+            ordem = Ordem()
+            ordem.add_share()
         elif (opcao=='3'):
             analisar_carteira()
         elif(opcao=='4'):

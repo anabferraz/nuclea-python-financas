@@ -1,8 +1,7 @@
 from analise_carteira import analisar_carteira
 from models.cliente import Cliente
 from models.ordem import Ordem
-from utils.menu_secundario import menu_cliente_secundario
-
+from utils.menu_secundario import menu_cliente_secundario, menu_ordem_secundario
 
 clientes = []
 def main():
@@ -23,7 +22,9 @@ def main():
         elif (opcao=='3'):
             analisar_carteira()
         elif(opcao=='4'):
-            pass
+            print("1 - Imprimir relatório completo\n2 - Imprimir relatório de uma única ação")
+            option = input("Selecione a opção desejada: ")
+            menu_ordem_secundario(option)
         elif(opcao=='5'):
             print("Obrigada por utilizar o sistema de gerenciamento de carteira de ações da Nuclea! Até a próxima! :)")
             validator = False

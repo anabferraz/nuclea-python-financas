@@ -1,4 +1,5 @@
 from models.cliente import Cliente
+from models.ordem import Ordem
 from utils.funcoes_auxiliares import formata_texto
 from utils.valida_cpf_folder import valida_cpf
 from utils.valida_data import valida_data_nascimento
@@ -39,5 +40,17 @@ def menu_cliente_secundario(option):
         conexao.delete(id_cliente)
         print(f"O cliente de CPF {id_cliente} foi deletado")
 
+    else:
+        print("Opção inválida.")
+
+def menu_ordem_secundario(option):
+    if (option == '1'):
+        conexao = Ordem()
+        id_cliente = valida_cpf()
+        conexao.select_shares(id_cliente)
+    elif (option == '2'):
+        conexao = Ordem()
+        id_cliente = valida_cpf()
+        conexao.select_share(id_cliente)
     else:
         print("Opção inválida.")

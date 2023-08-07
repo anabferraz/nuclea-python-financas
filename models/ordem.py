@@ -54,3 +54,20 @@ class Ordem:
 
         return parametros_conexao
 
+    def select_shares(self, id_cliente):
+        print("Selecionando ações no banco de dados: ")
+        select_query = (f"SELECT * FROM SHARE where cliente_id = '{id_cliente}';")
+        self.cursor.execute(select_query)
+        shares = self.cursor.fetchall()
+        for share in shares:
+            print(share)
+        return shares
+
+    def select_share(self, id_cliente):
+        ticket = input("Digite o código da ação na B3 (ex: PETR4): ").strip().upper()
+        print("Selecionando a ação no banco de dados: ")
+        select_query = (f"SELECT * FROM SHARE where cliente_id = '{id_cliente}' AND ticket = '{ticket}';")
+        self.cursor.execute(select_query)
+        share = self.cursor.fetchall()
+        print(share)
+        return share

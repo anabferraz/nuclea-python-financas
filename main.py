@@ -1,34 +1,27 @@
-from utils.funcoes_auxiliares import formata_texto
-from utils.valida_cpf import valida_cpf
-from utils.valida_data import valida_data_nascimento
-from utils.valida_endereco import valida_cep
-from utils.valida_rg import valida_rg
+from analise_carteira import analisar_carteira
+from models.cliente import Cliente
+from utils.menu_secundario import menu_cliente_secundario
+
 
 clientes = []
 def main():
+
+    cliente = Cliente()
     validator = True
     while (validator):
         print("Seja bem vindo(a) ao sistema de gerenciamento de carteira de ações da Nuclea! Selecione uma das opções abaixo:\n1 - Cliente\n2 - Cadastrar ação\n3 - Realizar análise da carteira\n4 - Imprimir relatório da carteira\n5 - Sair")
         opcao = (input("Digite a opção desejada: "))
 
         if (opcao=='1'):
-            print("1 - Cadastrar Cliente\n2 - Consultar Cliente\n3 - Alterar Cliente\n4 - Deletar Cliente\nInforme os dados do cliente: ")
-            cliente = {
-                "nome": formata_texto(input ("Nome: ")),
-                "cpf": valida_cpf(),
-                "rg": valida_rg(),
-                "data_nasc": valida_data_nascimento(),
-                "endereco": valida_cep(),
-                "num_casa": input ("número da casa: ")
-            }
-            clientes.append(cliente)
-            print(clientes)
+            option = input("Selecione a opção desejada:\n1 - Cadastrar Cliente\n2 - Consultar Cliente\n3 - Alterar Cliente\n4 - Deletar Cliente\n")
+            menu_cliente_secundario(option)
+
         elif (opcao=='2'):
-            opcao = '2'
+            pass
         elif (opcao=='3'):
-            opcao = '3'
+            analisar_carteira()
         elif(opcao=='4'):
-            opcao = '4'
+            pass
         elif(opcao=='5'):
             print("Obrigada por utilizar o sistema de gerenciamento de carteira de ações da Nuclea! Até a próxima! :)")
             validator = False
